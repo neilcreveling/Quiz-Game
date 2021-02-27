@@ -129,9 +129,34 @@ function buildQuestionsChoices(questionNum){
 
 // removes button capability
 function removeButtons(){
-    if (startButtonEl.firstElementChild !== null){
+    if (startBtnEl.firstElementChild !== null){
         for (var i = 0; i <= startButtonEl.childElementCount; i++){
             startButtonEl.firstElementChild.remove();
         }
+    }
+}
+
+// builds button element with class, text, function
+function buildButton(cla, txt, func){
+    cla = document.createElement("button");
+    cla.setAttribute("class", cla);
+    txt = document.createTextNode(txt);
+    cla.appendChild(txt);
+    startBtnEl.appendChild(cla);
+    cla.addEventListener("click", func);
+}
+
+// select an answer upon click
+function selectAnswer(event){
+    event.stopPropagation();
+    event.preventDefault();
+    // "data-value" attribute of that button
+    answerChoice = event.target.getAttribute("data-value");
+    correctIncorrectEl(answerChoice);
+    quizCurrent++;
+    quizEnd();
+    // if quiz is not over, build next question
+    if (quizCurrent !== quizQuestionsAnswers.length){
+        buildQuestionsChoices(quizCurrent);
     }
 }
