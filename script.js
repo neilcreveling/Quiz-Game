@@ -178,3 +178,17 @@ function compareAnswer(q, a){
         timeRemaining -= 5; // subtract time if answer was wrong
     }
 }
+
+ // works with previous function, creates quick message during game
+ function quickMessage(message){
+    var quickTimer = 4;
+    var quickInterval = setInterval(() => {
+        if (quickTimer !== 0){
+            quickTimer--;
+            answerValidityEl.textContent = message;
+        } else {
+            clearInterval(quickInterval);
+            answerValidityEl.textContent = " ";
+        }
+    }, 250);
+}
