@@ -152,7 +152,7 @@ function selectAnswer(event){
     event.preventDefault();
     // "data-value" attribute of that button
     answerChoice = event.target.getAttribute("data-value");
-    correctIncorrectEl(answerChoice);
+    correctIncorrect(answerChoice);
     quizCurrent++;
     quizEnd();
     // if quiz is not over, build next question
@@ -162,7 +162,7 @@ function selectAnswer(event){
 }
 
 // displays if answer is correct or incorrect
-function correctIncorrectEl(choice){
+function correctIncorrect(choice){
     // declare variables for qestion and answers, "data-states" for correct and incorrect
     var questionState = quizQuestionEl.firstElementChild.getAttribute("data-state");
     var answerState = quizChoiceEl[choice].firstElementChild.getAttribute("data-state");
@@ -192,3 +192,19 @@ function compareAnswer(q, a){
         }
     }, 250);
 }
+
+// end of game page
+function gameOver(){
+    clearQuestionsChoices();
+    // HTML elements for end screen
+    quizQuestionEl.innerHTML = "<h2>Your final score is " + finalScore + ".</h>";
+    quizChoiceEl[0].innerHTML = "<label for='highscore'>Enter your name or initials to submit your score:</label>";
+    quizChoiceEl[1].innerHTML = "<input type='text' class='initials'>";
+    quizChoiceEl[2].innerHTML = " ";
+    quizChoiceEl[3].innerHTML = " ";
+    quizChoiceEl[1].firstElementChild.focus();
+    buildButton("submit", "Submit Score!", submitScore);
+    correctIncorrectEl.textContent = " ";
+    initials = document.querySelector(".initials");
+    // set currentLeaderboard variable to localStorage's values, and turns it from a JSON string to an array
+    currentLeaderboard = JSON.parse(localStorage.getItem("scoreArray")) || []; 
