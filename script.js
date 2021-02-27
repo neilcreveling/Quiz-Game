@@ -126,3 +126,12 @@ function buildQuestionsChoices(questionNum){
         quizChoiceEl[i].firstElementChild.addEventListener("click", selectAnswer);
     }
 }
+
+// removes button capability
+function removeButtons(){
+    if (startButtonEl.firstElementChild !== null){
+        for (var i = 0; i <= startButtonEl.childElementCount; i++){
+            startButtonEl.firstElementChild.remove();
+        }
+    }
+}
