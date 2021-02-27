@@ -55,3 +55,12 @@ var quizQuestionsAnswers = [
         ]
     }
 ]
+
+// add query selectors for elements on page
+var mainBody = document.querySelector(".main");
+var highScoresBtn = document.querySelector(".high-scores");
+var timerEl = document.querySelector(".time-left");
+var quizQuestionEl = document.querySelector(".quiz-question");
+var quizChoiceEl = document.querySelector(".quiz-choice");
+var startBtnEl = document.querySelector(".start-button");
+var correctIncorrectEl = document.querySelector(".correct-incorrect");
