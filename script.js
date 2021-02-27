@@ -234,3 +234,33 @@ function compareHighScore(a, b) {
     }
     return comparison * -1;
 }
+
+// builds HTML for high scores section
+function buildHighScores(){
+    // stops timer if player accesses highscores during play
+    clearInterval(timeInterval); 
+    removeButtons();
+    clearQuestionsChoices();
+    quizQuestionEl.innerHTML = "<h2>Current Leaderboard</h2>";
+    // sets the currentLeaderboard to localStorage's values, turns it from JSON string to array
+    currentLeaderboard = JSON.parse(localStorage.getItem("scoreArray")) || [];
+    buildLeaderboard();
+    // create button to return to main menu
+    buildButton("menu", "Main Menu!", pageReInit);
+    // create button to clear leaderboard
+    buildButton("clear", "Clear Leaderboard!", clearScore);
+}
+
+// building the leaderboard
+function buildLeaderboard(){
+    if (currentLeaderboard.length < quizChoiceEl.length){
+        for (var i = 0; i < currentLeaderboard.length; i++){
+            quizChoiceEl[i].innerHTML = "<p>" + currentLeaderboard[i].name + " " + currentLeaderboard[i].score + "</p>";
+        }
+    } else if (currentLeaderboard.length >= quizChoiceEl.length){
+        // adds only the top 4 scores
+        for (var i = 0; i < quizChoiceEl.length; i++){
+            quizChoiceEl[i].innerHTML = "<p>" + currentLeaderboard[i].name + " " + currentLeaderboard[i].score + "</p>";
+        }
+    }
+}
