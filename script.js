@@ -291,3 +291,8 @@ function pageInit() {
     // html element for the start quiz button
     buildButton("start", "Start Quiz!", quizInit);
 }
+
+pageInit();
+
+// event listener for high scores button
+highScoresBtn.addEventListener("click", buildHighScores);
