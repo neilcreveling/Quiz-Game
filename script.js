@@ -102,3 +102,16 @@ function quizEnd(){
         gameOver();
     }
 }
+
+// Function to remove the questions and answers
+function clearQuestionsChoice(){
+    // remove question element children
+    quizQuestionEl.firstElementChild.remove();
+    // loop that removes all children elements of quiz-choice class, if they exist
+    for (var i = 0; i < quizChoiceEl.length; i++){
+        if (quizChoiceEl[i].firstElementChild !== null){
+            quizChoiceEl[i].firstElementChild.removeEventListener("click", selectAnswer);
+            quizChoiceEl[i].firstElementChild.remove();
+        }
+    }
+}
