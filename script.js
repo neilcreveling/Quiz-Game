@@ -208,6 +208,7 @@ function gameOver(){
     initials = document.querySelector(".initials");
     // set currentLeaderboard variable to localStorage's values, and turns it from a JSON string to an array
     currentLeaderboard = JSON.parse(localStorage.getItem("scoreArray")) || []; 
+}
 
 // submit a score
 function submitScore() {
@@ -221,4 +222,15 @@ function submitScore() {
     buildHighScores(); 
 }
 
-
+// organizes scores in leaderboard by comparing them with sort
+function compareHighScore(a, b) {
+    var playerA = a.score;
+    var playerB = b.score;
+    var comparison = 0;
+    if (playerA > playerB){
+        comparison = 1;
+    } else if (playerA < playerB){
+        comparison = -1;
+    }
+    return comparison * -1;
+}
