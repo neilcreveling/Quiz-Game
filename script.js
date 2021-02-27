@@ -73,3 +73,18 @@ function quizInit() {
     clearQuestionsChoices(); // removes question and answer choices
     buildQuestionsChoices(quizCurrent); // build question and answers based on current question
 }
+
+// timer function
+function startTimer() {
+    timeLeft = 60;
+    timeInterval = setInterval(() => {
+        if (timeLeft > 0){
+            timeLeft--;
+            timerEl.textContent = timeLeft;
+        } else {
+            clearInterval(timeInterval);
+            timerEl.textContent = timeLeft;
+            quizEnd();
+        }
+    }, 1000);
+}
