@@ -266,7 +266,7 @@ function buildLeaderboard(){
 }
 
 // reinitializes the page
-function pageReInit(){
+function pageReInit() {
     // removes extra buttons from game over page
     for (var i = 0; i <= startButtonEl.childElementCount; i++){
         startButtonEl.firstElementChild.remove();
@@ -278,4 +278,16 @@ function pageReInit(){
 function clearScore(){
     localStorage.clear();
     buildHighScores();
+}
+
+// page initialization
+function pageInit() {
+    // use html elements for description on the main menu
+    quizQuestionEl.innerHTML = "<h2>How much do you know about cats?</h2>";
+    quizChoiceEl[0].innerHTML = "<p>You'll have 60 seconds to answer 5 questions.</p>";
+    quizChoiceEl[1].innerHTML = "<p>When you answer wrong, you'll lose 5 seconds from the timer.</p>";
+    quizChoiceEl[2].innerHTML = "<p>When you're done with the quiz, the time remaining is your score.</p>";
+    quizChoiceEl[3].innerHTML = "<p>Good luck!</p>";
+    // html element for the start quiz button
+    buildButton("start", "Start Quiz!", quizInit);
 }
