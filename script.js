@@ -88,3 +88,17 @@ function startTimer() {
         }
     }, 1000);
 }
+
+// check if quiz is finished
+function quizEnd(){
+    // time runs out
+    if (timeLeft <= 0){
+        finalScore = timeLeft;
+        gameOver();
+    // all questions answered
+    } else if (quizCurrent === quizQuestionsAnswers.length){
+        clearInterval(timeInterval);
+        finalScore = timeRemaining;
+        gameOver();
+    }
+}
