@@ -273,3 +273,9 @@ function pageReInit(){
     }
     pageInit();
 }
+
+// clears leaderboard
+function clearScore(){
+    localStorage.clear();
+    buildHighScores();
+}
