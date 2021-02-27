@@ -264,3 +264,12 @@ function buildLeaderboard(){
         }
     }
 }
+
+// reinitializes the page
+function pageReInit(){
+    // removes extra buttons from game over page
+    for (var i = 0; i <= startButtonEl.childElementCount; i++){
+        startButtonEl.firstElementChild.remove();
+    }
+    pageInit();
+}
