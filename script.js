@@ -168,3 +168,13 @@ function correctIncorrectEl(choice){
     var answerState = quizChoiceEl[choice].firstElementChild.getAttribute("data-state");
     compareAnswer(questionState, answerState);
 }
+
+// works with previous function, compares the "data-state" correct and incorrect attributes between question and answer
+function compareAnswer(q, a){
+    if (q === a){
+        quickMessage("Correct!");
+    } else {
+        quickMessage("Incorrect!");
+        timeRemaining -= 5; // subtract time if answer was wrong
+    }
+}
