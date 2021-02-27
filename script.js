@@ -64,3 +64,12 @@ var quizQuestionEl = document.querySelector(".quiz-question");
 var quizChoiceEl = document.querySelector(".quiz-choice");
 var startBtnEl = document.querySelector(".start-button");
 var correctIncorrectEl = document.querySelector(".correct-incorrect");
+
+// create function to initialize quiz
+function quizInit() {
+    quizCurrent = 0; // starts at first question (0)
+    startTimer(); // starts the timer function
+    removeButtons(); // initialize start button
+    clearQuestionsChoices(); // removes question and answer choices
+    buildQuestionsChoices(quizCurrent); // build question and answers based on current question
+}
