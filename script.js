@@ -115,3 +115,14 @@ function clearQuestionsChoice(){
         }
     }
 }
+
+// build question and answer choices, adds click event listeners for answer selection
+function buildQuestionsChoices(questionNum){
+    // pulls question element with a question from quizQuestionsAnswers
+    quizQuestionEl.innerHTML = quizQuestionsAnswers[questionNum].question;
+    // loop that adds the questions as children to the quiz-choice class
+    for (var i = 0; i < quizChoiceEl.length; i++){
+        quizChoiceEl[i].innerHTML = quizQuestionsAnswers[questionNum].answers[i];
+        quizChoiceEl[i].firstElementChild.addEventListener("click", selectAnswer);
+    }
+}
