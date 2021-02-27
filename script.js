@@ -160,3 +160,11 @@ function selectAnswer(event){
         buildQuestionsChoices(quizCurrent);
     }
 }
+
+// displays if answer is correct or incorrect
+function correctIncorrectEl(choice){
+    // declare variables for qestion and answers, "data-states" for correct and incorrect
+    var questionState = quizQuestionEl.firstElementChild.getAttribute("data-state");
+    var answerState = quizChoiceEl[choice].firstElementChild.getAttribute("data-state");
+    compareAnswer(questionState, answerState);
+}
